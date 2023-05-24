@@ -1,14 +1,20 @@
-variables:
-  user:
-    env: ADMIN_USERNAME
-    value: "admin"
-    type: string
-  password:
-    env: ADMIN_PASSWORD
-    value: "not-set"
-    type: string
-
-services:
-  webserver:
-    port: 8080
-    protocol: tcp
+namespace: ernstov
+pablo-hack-kit:
+  defines: runnable
+  containers:
+    pablo-hack-kit:
+      build: .
+  variables:
+    password:
+      env: ADMIN_PASSWORD
+      type: string
+      value: not-set
+    user:
+      env: ADMIN_USERNAME
+      type: string
+      value: admin
+  services:
+    webserver:
+      container: pablo-hack-kit
+      port: 8080
+      protocol: tcp
